@@ -10,12 +10,12 @@
 <h1 class="text-monospace text-center">Новости</h1>
 
 {% for news in news_block %}
-<div class="block">
+
 <div class="col-12 col-md-16 col-lg-10">
     <h3>{{ news.title }} </h3>
     <p>Краткое описание  - {{ news.describe }}</p>
     <p>Дата публикации - {{ news.date }}</p>
-</div>
+
 </div>
 
 {% endfor %}
