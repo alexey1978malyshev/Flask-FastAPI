@@ -5,6 +5,9 @@ from get_block import get_blog
 app = Flask(__name__)
 logger = logging.getLogger(__name__)
 
+login = Alex
+password = qwe
+
 
 @app.route('/')
 def index():
@@ -28,7 +31,7 @@ def page_not_found(e):
         'title': 'Страница не найдена',
         'url': request.base_url,
     }
-    return render_template('404.html', **context), 404
+    return render_template('p404.html', **context), 404
 
 if __name__ == '__main__':
     app.run(debug=True)

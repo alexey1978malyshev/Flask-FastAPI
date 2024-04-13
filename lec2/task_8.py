@@ -17,7 +17,7 @@ def page_not_found(e):
         'title': 'Страница не найдена',
         'url': request.base_url,
     }
-    return render_template('404.html', **context), 404
+    return render_template('p404.html', **context), 404
 
 
 if __name__ == '__main__':

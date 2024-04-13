@@ -7,7 +7,8 @@ app = Flask(__name__)
 def index():
     # устанавливаем cookie
     response = make_response("Cookie установлен")
-    response.set_cookie('username', 'admin')
+    response.set_cookie('username', ';9uog')
+    response.delete_cookie('username')
     return response
 
 

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+<form action="/form" method="post">
+    <input type="text" name="name" placeholder="Введи имя">
+    <input type="submit" value="Нажми меня">
+</form>
+{% endblock %}
