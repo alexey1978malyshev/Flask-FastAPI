@@ -20,7 +20,7 @@ def greeting():
         name = request.form.get('name')
         flash(f'Приветствую, {name}!', 'success')
         return redirect(url_for('greeting'))
-    return render_template('form.html')
+    return render_template('students.html')
 
 
 if __name__ == '__main__':

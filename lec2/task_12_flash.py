@@ -21,7 +21,7 @@ def form():
 # Обработка данных формы
         flash('Форма успешно отправлена!', 'success')
         return redirect(url_for('form'))
-    return render_template('form.html')
+    return render_template('students.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

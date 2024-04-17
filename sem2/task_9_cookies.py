@@ -33,12 +33,12 @@ def set_cookies():
 
 
         return response
-    return render_template('form.html')
+    return render_template('students.html')
 
 @app.route('/del_cookies', methods=['GET', 'POST'])
 def del_cookies():
     if request.method == 'POST':
-        response = make_response(render_template('form.html'))
+        response = make_response(render_template('students.html'))
         response.delete_cookie('username')
         return response
     return render_template('main.html')
