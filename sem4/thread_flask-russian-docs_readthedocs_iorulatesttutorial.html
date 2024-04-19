@@ -1,0 +1,304 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Учебник &#8212; Документация Flask (русский перевод) 0.10.1</title>
+    <link rel="stylesheet" href="../_static/plone.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/badge_only.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js"></script>
+    <link rel="shortcut icon" href="../_static/flask-favicon.ico"/>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Введение в Flaskr" href="introduction.html" />
+    <link rel="prev" title="Быстрый старт" href="../quickstart.html" />
+<script language="javascript">
+//<![CDATA[
+
+Documentation.addTranslations({"locale": "ru", "plural_expr": "(n > 1)", "messages": {"See the definition": "Voir la d\u00e9finition"}});
+
+// See http://disqus.disqus.com/general_integration_help/
+var disqus_developer = 1;
+if (document.location.protocol == 'http:') {
+    disqus_developer = 0;
+}
+
+// Some HTML/CSS transforms we can't do in pure CSS (waiting for CSS3 support)
+$(document).ready(function () {
+
+    // Style of .. verisonmodified:: , .. versionadded:: ...
+    $('p:has(span.versionmodified)').addClass('p-versionmodified');
+
+    // Style of the TOC tree
+    $('ul:has(li.toctree-l1)').addClass('toctree');
+
+    // Decorate links to other sites
+    $('a[class~=external]').attr('target', '_blank');
+
+    // Glossary terms
+    $('em.xref').attr('title', _('See the definition'));
+
+    // We need to have all <pre> in a <div class="highlight"> to mimic pygments
+    // to work around a pygments (?) bug
+    var suffixes = {cfg: null, python:null};
+    for (var suffix in suffixes) {
+        var pattern = 'div.highlight-' + suffix + ' > pre';
+        $(pattern).wrap('<div class="highlight" />');
+    }
+    return true;
+});
+//]]>
+</script>
+
+  
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="https://flask-russian-docs.readthedocs.io/ru/0.10.1/tutorial/" />
+
+<link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="../_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'tutorial/index'
+READTHEDOCS_DATA['source_suffix'] = '.rst'
+</script>
+
+<script type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-analytics.js"></script>
+
+<!-- end RTD <extrahead> -->
+</head><body>
+<!--[if lte IE 6]>
+<style type="text/css">
+#ie6msg{border:3px solid #090; margin:8px 0; background:#cfc; color:#000;}
+#ie6msg h4{margin:8px; padding:0;}
+#ie6msg p{margin:8px; padding:0;}
+#ie6msg p a.getie8{font-weight:bold; color:#006;}
+#ie6msg p a.ie6expl{font-weight:normal; color:#006;}
+</style>
+<div id="ie6msg">
+<h4>Did you know that your browser is out of date?</h4>
+<p>If the layout of this site seems ugly, that's because you're actually using
+an outdated browser. And we wont put any effort to provide a nice layout to IE6
+users.</p>
+<p>To get the best possible experience using our website we recommend that you
+upgrade your browser to a newer version. The current version
+is <a class="getie8"
+href="http://upgradeie.s3.amazonaws.com/eng/index.html">Internet Explorer
+8</a>. The upgrade is free. If you're using a PC at work you should contact your
+IT administrator.</p>
+<p>If you want to you may also try some other popular Internet browsers
+like <a class="ie6expl"
+href="http://getfirefox.com">Firefox</a>, <a class="ie6expl"
+href="http://www.google.com/chrome">Chrome</a>, <a class="ie6expl"
+href="http://www.opera.com">Opera</a>, or <a class="ie6expl"
+href="http://www.apple.com/safari/download/">Safari</a></p>
+</div>
+<![endif]-->
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Содержание модулей Python"
+             >модули</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Введение в Flaskr"
+             accesskey="N">вперёд</a> |</li>
+        <li class="right" >
+          <a href="../quickstart.html" title="Быстрый старт"
+             accesskey="P">назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Документация Flask (русский перевод) 0.10.1</a> &#187;</li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tutorial">
+<span id="id1"></span><h1>Учебник<a class="headerlink" href="#tutorial" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Хотите разработать приложение на Python под Flask?  Здесь вам даётся
+такой шанс - изучить как это делается на примере.  В этом учебнике мы
+создадим простое приложение микроблога.  Оно будет поддерживать одного
+пользователя, который сможет создавать чисто текстовые записи, без
+возможности подписки или комментирования, однако в ней будет всё, что
+необходимо для того, чтобы начать работу.  Мы будем использовать Flask
+и SQLite в качестве базы данных, которая идёт в комплекте с Python,
+поэтому вам больше ничего не понадобится.</p>
+<p>Если вам нужны все исходные тексты, чтобы не вводить их вручную либо
+для сравнения, посмотрите их здесь <a class="reference external" href="http://github.com/mitsuhiko/flask/tree/master/examples/flaskr/">исходные тексты примеров</a>.</p>
+<p><a class="reference external" href="http://flask.pocoo.org/docs/tutorial/">Оригинал этой страницы</a></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Введение в Flaskr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="folders.html">Шаг 0: Создание папок</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Шаг 1: Схема базы данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Шаг 2: Код для настройки приложения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbcon.html">Шаг 3: Соединения с базой данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbinit.html">Шаг 4: Создание базы данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">Шаг 5: Функции представления</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views.html#id2">Показать записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#id3">Добавление новой записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#id4">Вход и выход</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Шаг 6: Шаблоны</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#layout-html">layout.html</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#show-entries-html">show_entries.html</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#login-html">login.html</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="css.html">Шаг 7: Добавление стиля</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Бонус: Тестирование приложения</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<!--<p class="logo"><a href="../index.html"><img src="../_static/flask-small.png" />
+</a></p>-->
+<table cellspacing="0">
+<tr>
+<td><a href="https://media.readthedocs.org/pdf/flask-russian-docs/latest/flask-russian-docs.pdf">PDF
+</a></p></td>
+<td><a href="https://media.readthedocs.org/htmlzip/flask-russian-docs/latest/flask-russian-docs.zip">HTML
+</a></p></td>
+<td><a href="https://media.readthedocs.org/epub/flask-russian-docs/latest/flask-russian-docs.epub">Epub
+</a></p></td>
+</tr>
+<tr>
+<p><a href="https://www.ozon.ru/context/detail/id/135559040/?partner=flask-russian-docs"><img src="_static/grinberg-flask.jpg" 
+  alt="flask russian book"></a>
+</p>
+</tr>
+</table>
+
+  <h4>Предыдущий раздел</h4>
+  <p class="topless"><a href="../quickstart.html"
+                        title="предыдущая глава">Быстрый старт</a></p>
+  <h4>Следующий раздел</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="следующая глава">Введение в Flaskr</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Эта страница</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tutorial/index.rst.txt"
+            rel="nofollow">Исходный текст</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Искать" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Алфавитный указатель"
+             >указатель</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Содержание модулей Python"
+             >модули</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Введение в Flaskr"
+             >вперёд</a> |</li>
+        <li class="right" >
+          <a href="../quickstart.html" title="Быстрый старт"
+             >назад</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Документация Flask (русский перевод) 0.10.1</a> &#187;</li> 
+      </ul>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2013, Armin Ronacher.
+    </div>
+
+<!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ru/stat/?id=25069343&amp;from=informer"
+target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/25069343/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:25069343,lang:'ru'});return false}catch(e){}"/></a>
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+                    try {
+                                    w.yaCounter25069343 = new Ya.Metrika({id:25069343,
+                                                        clickmap:true,
+                                                                            trackLinks:true,
+                                                                                                accurateTrackBounce:true});
+                                            } catch(e) { }
+                                                });
+
+            var n = d.getElementsByTagName("script")[0],
+                    s = d.createElement("script"),
+                            f = function () { n.parentNode.insertBefore(s, n); };
+                                s.type = "text/javascript";
+                                    s.async = true;
+                                        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+                                            if (w.opera == "[object Opera]") {
+                                                        d.addEventListener("DOMContentLoaded", f, false);
+                                                            } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/25069343" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<hr />
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ferm32'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
+  </body>
+</html>
