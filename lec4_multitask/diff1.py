@@ -9,6 +9,8 @@ urls = ['https://www.google.ru/',
         ]
 start_time = time.time()
 
+
+
 for url in urls:
     response = requests.get(url)
     filename = 'sync_' + url.replace('https://', '').replace('.', '_').replace('/', '') + '.html'
