@@ -8,15 +8,35 @@
 🐀 В каждом решении нужно вывести время выполнения
 вычислений."""
 
-import asyncio
 import json, time
+from random import randint
+from functools import reduce
 
-with open('array_data.json', 'r', encoding='utf-8') as f:
+
+
+# array_num = []
+#
+# def fill_aray(size):
+#     for _ in range(size):
+#         array_num.append(randint(1,100))
+#     return array_num
+#
+# with open('array_data.json', 'w',encoding='utf-8') as f:
+#     data ={}
+#     data['arr'] = fill_aray(1000000)
+#     json.dump(data, f)
+#
+# print(len(array_num))
+
+arr_data = []
+with open('../array_data.json', 'r', encoding='utf-8') as f:
     d = json.load(f)
     arr_data = d['arr']
-# print(f'sum elem = {sum(arr_data)}')
+    print(f'sum elem = {sum(arr_data)}')
 
-result = 0
+
+# print(arr[:10])
+
 
 def chunkify(arr: list, number_of_chunks=20):
     step = len(arr) // number_of_chunks
@@ -27,31 +47,28 @@ def chunkify(arr: list, number_of_chunks=20):
         yield arr
 
 
-async def chunks_counter(chunk):
-    global result
-    result += sum(chunk)
-    return result
+def chunks_mapper(chunk):
 
-async def main():
+    return sum(chunk)
+
+
+def reducer(p, c):
+    return p + c
+
+
+def main():
     start_time = time.time()
     data_chunks = chunkify(arr_data, number_of_chunks=20)
-    tasks = []
-    for el in data_chunks:
-        task = asyncio.ensure_future(chunks_counter(el,))
-        tasks.append(task)
-    await asyncio.gather(*tasks)
-    print(f"Сумма элементов списка: {result}")
+    mapped = map(chunks_mapper, data_chunks)
+    reduced = reduce(reducer, mapped)
+
+    print(reduced)
     print(f'Total time = {time.time() - start_time:.2f} seconds')
 
 
-
-
 if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    main()
 
-
-"""Сумма элементов списка: 50492727
-Total time = 0.57 seconds"""
-
-
+"""sum elem = 50492727
+50492727
+Total time = 0.04 seconds"""

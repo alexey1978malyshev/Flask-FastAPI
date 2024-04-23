@@ -7,18 +7,16 @@
 многопроцессорность и асинхронность.
 🐀 В каждом решении нужно вывести время выполнения
 вычислений."""
+import multiprocessing
+from random import randint
+import json,time
 
-import threading, json, time
-from functools import reduce
-
-with open('array_data.json', 'r', encoding='utf-8') as f:
+with open('../array_data.json', 'r', encoding='utf-8') as f:
     d = json.load(f)
     arr_data = d['arr']
-    print(f'sum elem = {sum(arr_data)}')
+#print(f'sum elem = {sum(arr_data)}')
 
-
-result = 0
-
+result = multiprocessing.Value('i', 0)
 
 def chunkify(arr: list, number_of_chunks=20):
     step = len(arr) // number_of_chunks
@@ -28,26 +26,31 @@ def chunkify(arr: list, number_of_chunks=20):
     else:
         yield arr
 
-def chunks_counter(chunk):
-    global result
-    result += sum(next(chunk))
-    return result
+def chunks_counter(chunk, res):
+    with res.get_lock():
+        res.value += sum(chunk)
+    return res
 
 
 start_time = time.time()
-threads = []
-data_chunks = chunkify(arr_data, number_of_chunks=20)
+processes = []
+
+if __name__ == '__main__':
+    start_time = time.time()
+    processes = []
+    data_chunks = chunkify(arr_data, number_of_chunks=2)
 
 
-for i in range(20):
-    t = threading.Thread(target=chunks_counter, args=(data_chunks,))
-    threads.append(t)
-    t.start()
+    for el in data_chunks:
+        process = multiprocessing.Process(target=chunks_counter, args=(el, result))
+        processes.append(process)
+        process.start()
+    for process in processes:
+        process.join()
 
-for t in threads:
-    t.join()
 
+    print(f"Сумма элементов списка: {result.value}")
+    print(f'Total time = {time.time() - start_time:.2f} seconds')
 
-print(f"Сумма элементов списка: {result}")
-print(f'Total time = {time.time() - start_time:.2f} seconds')
-
+"""Сумма элементов списка: 50492727
+Total time = 0.57 seconds"""
