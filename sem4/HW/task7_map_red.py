@@ -32,7 +32,7 @@ arr_data = []
 with open('../array_data.json', 'r', encoding='utf-8') as f:
     d = json.load(f)
     arr_data = d['arr']
-    print(f'sum elem = {sum(arr_data)}')
+   # print(f'sum elem = {sum(arr_data)}')
 
 
 # print(arr[:10])
@@ -71,4 +71,4 @@ if __name__ == '__main__':
 
 """sum elem = 50492727
 50492727
-Total time = 0.04 seconds"""
+Total time = 0.01 seconds"""

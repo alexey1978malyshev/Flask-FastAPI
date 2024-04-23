@@ -52,6 +52,6 @@ if __name__ == '__main__':
 
 
 """Сумма элементов списка: 50492727
-Total time = 0.57 seconds"""
+Total time = 0.01 seconds"""
 
 
