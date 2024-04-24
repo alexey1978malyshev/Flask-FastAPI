@@ -23,7 +23,7 @@ def fill_aray(size):
 
 with open('../array_data.json', 'w',encoding='utf-8') as f:
     data ={}
-    data['arr'] = fill_aray(1000000)
+    data['arr'] = fill_aray(100)
     json.dump(data, f)
 
 print(len(array_num))
