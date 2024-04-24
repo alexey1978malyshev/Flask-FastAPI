@@ -16,7 +16,7 @@ with open('../array_data.json', 'r', encoding='utf-8') as f:
     arr_data = d['arr']
 # print(f'sum elem = {sum(arr_data)}')
 
-result = 0
+#result = 0
 
 def chunkify(arr: list, number_of_chunks=20):
     step = len(arr) // number_of_chunks
@@ -28,9 +28,10 @@ def chunkify(arr: list, number_of_chunks=20):
 
 
 async def chunks_counter(chunk):
-    global result
-    result += sum(chunk)
-    return result
+    #global result
+    res = 0
+    res += sum(chunk)
+    return res
 
 async def main():
     start_time = time.time()
@@ -40,6 +41,9 @@ async def main():
         task = asyncio.ensure_future(chunks_counter(el,))
         tasks.append(task)
     await asyncio.gather(*tasks)
+
+    result = sum([task.result() for task in tasks])
+
     print(f"Сумма элементов списка: {result}")
     print(f'Total time = {time.time() - start_time:.2f} seconds')
 
@@ -49,6 +53,7 @@ async def main():
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main())
+
 
 
 """Сумма элементов списка: 50492727
